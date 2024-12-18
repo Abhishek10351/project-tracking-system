@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     "corsheaders",
     "accounts.apps.AccountsConfig",
     "projects.apps.ProjectsConfig",
+    "tasks.apps.TasksConfig",
 ]
 
 MIDDLEWARE = [

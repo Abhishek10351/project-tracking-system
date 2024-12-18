@@ -8,11 +8,13 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = []
+    dependencies = [
+        ("projects", "0001_initial"),
+    ]
 
     operations = [
         migrations.CreateModel(
-            name="Project",
+            name="Task",
             fields=[
                 (
                     "id",
@@ -23,29 +25,18 @@ class Migration(migrations.Migration):
                         verbose_name="ID",
                     ),
                 ),
-                ("name", models.CharField(max_length=100)),
+                ("title", models.CharField(max_length=100)),
                 ("description", models.TextField()),
                 ("start_date", models.DateField()),
-                ("end_date", models.DateField()),
-            ],
-            options={
-                "ordering": ["name"],
-            },
-        ),
-        migrations.CreateModel(
-            name="Employee",
-            fields=[
+                ("is_completed", models.BooleanField(default=False)),
+                ("due_date", models.DateField()),
                 (
-                    "id",
-                    models.BigAutoField(
-                        auto_created=True,
-                        primary_key=True,
-                        serialize=False,
-                        verbose_name="ID",
+                    "employee",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="projects.employee",
                     ),
                 ),
-                ("name", models.CharField(max_length=100)),
-                ("email", models.EmailField(max_length=254)),
                 (
                     "project",
                     models.ForeignKey(
@@ -55,7 +46,7 @@ class Migration(migrations.Migration):
                 ),
             ],
             options={
-                "ordering": ["name"],
+                "ordering": ["due_date"],
             },
         ),
     ]

@@ -1,6 +1,6 @@
 from rest_framework import viewsets
-from .models import Project, Employee, Task
-from .serializers import ProjectSerializer, EmployeeSerializer, TaskSerializer
+from .models import Project, Employee
+from .serializers import ProjectSerializer, EmployeeSerializer
 
 
 class ProjectViewSet(viewsets.ModelViewSet):
@@ -11,8 +11,3 @@ class ProjectViewSet(viewsets.ModelViewSet):
 class EmployeeViewSet(viewsets.ModelViewSet):
     queryset = Employee.objects.all()
     serializer_class = EmployeeSerializer
-
-
-class TaskViewSet(viewsets.ModelViewSet):
-    queryset = Task.objects.all()
-    serializer_class = TaskSerializer
